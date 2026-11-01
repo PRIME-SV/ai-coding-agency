@@ -45,7 +45,7 @@ Coordinator (main chat — development-agency skill)
 
 | | Without | With this agency |
 |---|---|---|
-| **Approval gates** | None — agent self-approves | Brainstorm + Plan, both requiring your explicit OK |
+| **Approval gates** | None — agent self-approves | Brainstorm, Plan, and Review, each requiring your explicit OK |
 | **UI changes** | Ad-hoc, inconsistent | Platform-aware Apple Design principles, user-approved before implementation |
 | **Code review** | Same agent reviews its own work | Separate reviewer agent, evidence-based, cannot edit files |
 | **Test execution** | Often fabricated or skipped | Independent tester, reports exact commands + exit codes |
@@ -107,6 +107,12 @@ For UI/user workflow changes, there is a **third gate**:
 
 3. **Design approval** — UI/UX advisor produces a versioned, annotated wireframe or state table. You approve before the developer writes any UI code.
 
+After implementation, there is a **review gate**:
+
+4. **Review approval** — the reviewer checks both the full diff (every changed line) and the whole codebase around it, and labels each finding `new` or `pre-existing`. You decide per finding: fix now, accept, or defer. Fixes and testing start only after you approve the review.
+
+Every run ends with a **structured final report**: summary, approvals record, acceptance criteria, changed files, review findings and decisions, test results, deviations, limitations, and how to verify. See [`final-report.md`](skills/development-agency/references/final-report.md).
+
 ### Workflow stages
 
 ```
@@ -127,12 +133,16 @@ Stage 3: Implementation
   └─► Change report returned to coordinator
 
 Stage 4: Independent Review
-  └─► Reviewer inspects code against requirements & approved design
-  └─► Findings returned to developer for fixes
+  └─► Reviewer checks the full diff AND the whole codebase
+  └─► YOU APPROVE the review: fix / accept / defer each finding
+  └─► Approved fixes go to the developer, then re-review
 
 Stage 5: Independent Testing
   └─► Tester executes real tests, reports exact commands & results
   └─► Failures returned to developer; retest after fixes
+
+Stage 6: Final Report
+  └─► Coordinator delivers the structured delivery report
 ```
 
 ### What each role cannot do

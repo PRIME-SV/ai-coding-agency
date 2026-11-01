@@ -105,8 +105,9 @@ This agency enforces an engineering-first workflow:
 1. **Brainstorm Gate**: The AI explores existing code and alternatives, and presents questions. You must explicitly approve the approach before planning begins.
 2. **UI/UX Gate** _(for UI tasks)_: Designs adapted for the target platform using fluid interaction principles, requiring user sign-off.
 3. **Plan Gate**: File-level architecture and acceptance criteria must be explicitly approved before any code is modified.
-4. **Independent Review**: A dedicated reviewer agent evaluates code changes against requirements without permission to edit files.
+4. **Independent Review + Review Gate**: A dedicated reviewer agent checks both the full diff and the whole codebase without permission to edit files. You approve the review and decide per finding: fix, accept, or defer.
 5. **Real Test Execution**: A dedicated tester agent executes tests directly and provides reproducible command outputs.
+6. **Structured Final Report**: Every run ends with a delivery report: approvals, acceptance criteria, changes, review decisions, test results, and limitations.
 
 ---
 
