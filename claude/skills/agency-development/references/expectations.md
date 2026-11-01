@@ -1,0 +1,7 @@
+# Personal developer expectations
+
+Mandatory for every feature: thoroughly investigate the actual logic, architecture, and existing code requirements; present a reasoned brainstorm and necessary questions; resolve questions and obtain explicit user brainstorm approval; then create a detailed requirements/file-level implementation plan and obtain separate user plan approval; only then implement; afterward report what changed. The coordinator presents proposals and relays user responses. Neither agent may invent approval. Read-only investigation and design consultation can proceed before approval, but application/test edits, dependency installation, and migration execution cannot.
+
+Preserve application-code ownership, consult UI/UX before affected implementation, and repair demonstrated issues inside the approved scope. Material scope/design changes require renewed approval at the affected stage. Follow explicit user changes or waivers of the process, recording them. Preserve existing work and avoid unrelated refactors. Keep the brainstorm clear and proportionate without omitting relevant architectural or logical concerns.
+
+Add detailed personal development standards here. For extensive topics, add reference files and link them here with reading conditions. Keep mandatory rules distinguishable from preferences and illustrative examples. Project-specific APIs, architecture, commands, and constraints belong in project instructions.

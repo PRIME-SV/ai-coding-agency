@@ -1,0 +1,30 @@
+# Claude Code runtime & personal data
+.credentials.json
+settings.local.json
+.claude.json
+.claude.json.backup
+projects/
+todos/
+statsig/
+shell-snapshots/
+ide/
+plans/
+session-env/
+file-history/
+debug/
+logs/
+cache/
+tmp/
+.tmp/
+*.lock
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
