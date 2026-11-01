@@ -1,4 +1,4 @@
-# install.ps1 — Install the Codex Development Agency into your Codex home (Windows)
+# install.ps1 - Install the Codex Development Agency into your Codex home (Windows)
 param(
     [string]$CodexHome = "$env:USERPROFILE\.codex"
 )
@@ -23,7 +23,7 @@ $AgentsTarget = "$CodexHome\AGENTS.md"
 $MarkerBegin  = "<!-- codex-development-agency:begin -->"
 
 if ((Test-Path $AgentsTarget) -and (Select-String -Path $AgentsTarget -Pattern $MarkerBegin -Quiet)) {
-    Write-Host "AGENTS.md: agency block already present — skipping merge."
+    Write-Host "AGENTS.md: agency block already present -- skipping merge."
 } else {
     Add-Content -Path $AgentsTarget -Value ""
     Add-Content -Path $AgentsTarget -Value (Get-Content "$RepoDir\AGENTS.md" -Raw)
