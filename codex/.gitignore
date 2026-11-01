@@ -1,0 +1,43 @@
+# Codex runtime & personal data
+.codex-global-state.json
+.codex-global-state.json.bak
+auth.json
+cap_sid
+*.guard
+*.lock
+.sandbox
+.sandbox-bin
+.sandbox-secrets
+.sandbox_migration
+.personality_migration
+.chatgpt-projects/
+.tmp/
+tmp/
+cache/
+sessions/
+archived_sessions/
+thread-writer-locks/
+project-metadata-locks/
+memories/
+attachments/
+dictation-history/
+generated_images/
+visualizations/
+sqlite/
+node_repl/
+vendor_imports/
+plugins/
+rollout-migrations/
+ambient-suggestions/
+pets/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
