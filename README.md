@@ -9,6 +9,7 @@ A multi-agent development ecosystem providing structured, reliable workflows wit
 | Ecosystem        | Directory          | Status   | Description                                                                                                                        |
 | ---------------- | ------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | **OpenAI Codex** | [`codex/`](codex/) | ✅ Ready | Complete multi-agent agency with 5 roles (`coordinator`, `developer`, `ui-ux`, `reviewer`, `tester`) and 2-gate approval workflow. |
+| **Claude Code**  | [`claude/`](claude/) | ✅ Ready | Same agency as Claude Code subagents and skills: 5 roles, the same approval gates, per-role tool limits. |
 
 ---
 
@@ -35,6 +36,34 @@ git clone https://github.com/PRIME-SV/ai-coding-agency
 cd ai-coding-agency\codex
 .\install.ps1
 ```
+
+---
+
+## Claude Code Development Agency
+
+For full details, setup instructions, workflows, and roles for Claude Code, see the [Claude Code Documentation](claude/README.md).
+
+### Quick Install (Claude Code)
+
+Clone this repository and run the installer from the `claude/` directory:
+
+**macOS / Linux**
+
+```bash
+git clone https://github.com/PRIME-SV/ai-coding-agency
+cd ai-coding-agency/claude
+bash install.sh
+```
+
+**Windows (PowerShell)**
+
+```powershell
+git clone https://github.com/PRIME-SV/ai-coding-agency
+cd ai-coding-agency\claude
+.\install.ps1
+```
+
+Then start a new Claude Code session. Run `/development-agency <task>`, or just ask for a feature and the global `CLAUDE.md` rule starts the agency.
 
 ---
 
@@ -66,6 +95,14 @@ ai-coding-agency/
 │   ├── THIRD-PARTY-NOTICES.txt    # Attribution notices
 │   ├── agents/                    # Codex agent definitions (*.toml)
 │   └── skills/                    # Specialized agent skills
+├── claude/                        # Claude Code agency bundle
+│   ├── README.md                  # Claude Code-specific documentation
+│   ├── CLAUDE.md                  # Global rule block for Claude Code
+│   ├── install.sh                 # Unix installation script
+│   ├── install.ps1                # Windows PowerShell installation script
+│   ├── THIRD-PARTY-NOTICES.txt    # Attribution notices
+│   ├── agents/                    # Claude Code subagent definitions (*.md)
+│   └── skills/                    # Specialized agent skills (shared with Codex)
 ```
 
 ---
