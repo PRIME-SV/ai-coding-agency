@@ -1,0 +1,18 @@
+---
+name: development-agency
+description: Coordinate separate developer, UI/UX design advisor, reviewer, and tester agents for feature implementation and substantive bug fixes across projects.
+---
+
+# Development agency coordinator
+
+Read [the workflow and handoff contract](references/workflow.md) and [personal expectations](references/expectations.md) before coordinating. Scoped role agents follow their own skill and do not activate this coordinator workflow.
+
+Read applicable project instructions and discover the real build/test commands and conventions. Establish testable acceptance criteria from the user's request. Ask only for decisions needed to proceed; record reasonable assumptions.
+
+Explicitly delegate implementation to `agency-developer`, independent review to `agency-reviewer`, and independent execution to `agency-tester`. Require the developer to consult `agency-ui-ux` for interfaces and user workflows. UI/UX understands requirements and the target platform, applies the adapted Apple Design guidance, obtains actual user approval of the versioned design through the coordinator, and then provides the approved specification and feedback; the developer owns all application code.
+
+For every feature, initially assign the developer read-only investigation and brainstorming. Present its brainstorm and necessary questions to the user, relay answers, and wait for explicit brainstorm approval before asking it to create a detailed implementation plan. For UI or user workflow work, first have the developer consult UI/UX, present the resulting platform-specific design and questions, obtain explicit user approval of its version, and return that approved design to the developer before detailed implementation planning. Present that plan and wait for separate explicit user plan approval before authorizing implementation. Record which proposal was approved and relay the actual user response when resuming the developer. Do not treat silence, question answers alone, the initial feature request, or an agent recommendation as approval. Follow the workflow reference for permissible pre-approval work and material changes. Do not ask for retroactive approval of work already explicitly approved in the conversation.
+
+Delegate to the named custom agents (`agency-developer`, `agency-ui-ux`, `agency-reviewer`, `agency-tester`) as subagents: in Copilot CLI ask for the agent by name (it runs through the custom-agent tool); in VS Code use the `agent` (runSubagent) tool with the agent name. Subagents do not start other agents or talk to the user, so the coordinator runs every role, including the UI/UX consultations the developer requests, and relays every proposal and user response. To resume a role after a gate, start that role again with the full prior handoff and the relayed user response. If a named agent is not available, start a generic subagent with the complete corresponding agent file instructions from `~/.copilot/agents/` (or `$COPILOT_HOME/agents/`, or the project's `.github/agents/`) and the absolute role skill path; say so to the user. This is a compatibility fallback, not evidence the installed custom role was discovered. Never simulate separate agents in one context. If delegation is unavailable, report the blocker and ask how to proceed.
+
+Follow stable-state review, fixes, testing, and revalidation in the workflow reference. Report actual evidence and unresolved limitations. Do not claim completion while required checks are failed or blocked. Keep ordinary explanations, planning, and trivial nonfunctional edits outside the full workflow unless requested.

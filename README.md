@@ -10,6 +10,7 @@ A multi-agent development ecosystem providing structured, reliable workflows wit
 | ---------------- | ------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | **OpenAI Codex** | [`codex/`](codex/) | ✅ Ready | Complete multi-agent agency with 5 roles (`coordinator`, `developer`, `ui-ux`, `reviewer`, `tester`) and 2-gate approval workflow. |
 | **Claude Code**  | [`claude/`](claude/) | ✅ Ready | Same agency as Claude Code subagents and skills: 5 roles, the same approval gates, per-role tool limits. |
+| **GitHub Copilot** | [`copilot/`](copilot/) | ✅ Ready | Same agency as Copilot custom agents and Agent Skills for Copilot CLI and VS Code agent mode. |
 
 ---
 
@@ -67,6 +68,34 @@ Then start a new Claude Code session. Run `/development-agency <task>`, or just 
 
 ---
 
+## GitHub Copilot Development Agency
+
+For full details, setup instructions, workflows, and roles for GitHub Copilot, see the [GitHub Copilot Documentation](copilot/README.md).
+
+### Quick Install (GitHub Copilot)
+
+Clone this repository and run the installer from the `copilot/` directory:
+
+**macOS / Linux**
+
+```bash
+git clone https://github.com/PRIME-SV/ai-coding-agency
+cd ai-coding-agency/copilot
+bash install.sh
+```
+
+**Windows (PowerShell)**
+
+```powershell
+git clone https://github.com/PRIME-SV/ai-coding-agency
+cd ai-coding-agency\copilot
+.\install.ps1
+```
+
+Then start a new Copilot CLI session (`copilot`). Run `/development-agency <task>`, or just ask for a feature and the global `copilot-instructions.md` rule starts the agency. To use it in VS Code or the Copilot cloud agent, copy it into a repository's `.github/` folder (see the [per-project install](copilot/README.md#per-project-install)).
+
+---
+
 ## Core Philosophy
 
 Traditional AI coding assistants often jump straight to writing code without exploring alternatives, fabricate test results, skip peer review, or introduce unapproved breaking changes.
@@ -102,6 +131,14 @@ ai-coding-agency/
 │   ├── install.ps1                # Windows PowerShell installation script
 │   ├── THIRD-PARTY-NOTICES.txt    # Attribution notices
 │   ├── agents/                    # Claude Code subagent definitions (*.md)
+│   └── skills/                    # Specialized agent skills (shared with Codex)
+├── copilot/                       # GitHub Copilot agency bundle
+│   ├── README.md                  # Copilot-specific documentation
+│   ├── copilot-instructions.md    # Global rule block for Copilot
+│   ├── install.sh                 # Unix installation script
+│   ├── install.ps1                # Windows PowerShell installation script
+│   ├── THIRD-PARTY-NOTICES.txt    # Attribution notices
+│   ├── agents/                    # Copilot custom agent definitions (*.agent.md)
 │   └── skills/                    # Specialized agent skills (shared with Codex)
 ```
 

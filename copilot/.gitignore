@@ -1,0 +1,21 @@
+# Copilot CLI runtime & personal data
+config.json
+settings.json
+session-state/
+history-session-state/
+logs/
+mcp-config.json
+cache/
+tmp/
+*.lock
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
