@@ -1,0 +1,44 @@
+# Workflow and handoff contract
+
+## Setup
+Record scope, acceptance criteria, relevant project guidance, expected test commands, and known constraints. Do not rewrite the project's instructions or install dependencies without a task-related need. Carry existing user authorization and constraints into each assignment.
+
+## Implementation and UI consultation
+For every feature, assign the developer the requirements and read-only investigation/brainstorming first. It must inspect actual logic, architecture, code requirements, dependencies, constraints, alternatives, and edge cases, then return a user-facing brainstorm with necessary questions. Present that brainstorm, relay answers, settle questions, and explicitly request brainstorm approval. Stop dependent work until the user approves the identified brainstorm. If no questions are needed, approval is still required.
+
+For UI/user workflow work, after brainstorm approval have the developer request a separate agency-ui-ux design consultation. UI/UX first establishes requirements and target platform/input context, applies the adapted Apple Design guidance, and returns a versioned reviewable draft with questions. Present it to the user and request explicit design approval. Relay actual user approval and the approved version to UI/UX, then return its approved design handoff to the developer. Drafts remain unapproved; developer or agent agreement, silence, answers alone, and brainstorm approval do not approve the design. Stop at this gate until approval or an explicit user-directed waiver. Read-only requirements/platform discovery may happen earlier.
+
+Only after brainstorm approval and, for UI work, user design approval, resume the developer to create a detailed plan: requirements, acceptance criteria, scope, proposed behavior/architecture, specific new/modified files and purposes, ordered implementation steps, interfaces/dependencies, UI design where applicable, validation, and risks. Present the plan to the user and request separate plan approval. Stop dependent work until that approval arrives. The initial feature request, silence, elapsed time, question answers alone, and another agent's endorsement do not approve either gate. Clarify ambiguous responses. Record the actual user response and proposal version/summary, then include them when resuming the developer. A user may explicitly change or waive the process; record that direction, never assume it.
+
+Before plan approval, read-only investigation and design-only UI/UX consultation are allowed. Do not edit application code/tests, install dependencies, or execute migrations. Keep proposals in chat unless writing proposal documents is explicitly authorized. If scope/design changes materially, return to the relevant gate with the revised proposal before affected implementation. Routine corrections within the approved scope do not restart both gates.
+
+After plan approval, assign application-code ownership and authorize implementation of the approved scope. The developer identifies interface/user-flow impact early and obtains user-approved design before detailed planning and affected UI implementation. It can continue independent non-UI investigation in parallel at any stage; independent non-UI implementation requires plan approval. Copilot role agents do not start other agents, so always relay its design request through the coordinator to a separate UI/UX advisor, present the design proposal to the user, relay actual approval to UI/UX, and return its approved specification and approval record before resuming the developer. If no slot exists, pause rather than bypass required consultation. UI/UX does not edit application code. Material design changes require renewed user design approval and relevant plan reapproval before affected implementation. Routine repairs restoring an approved design do not restart design approval.
+
+After implementation, present the developer's change report to the user: what changed and why, actual new/modified files, resulting behavior, acceptance-criteria status, deviations, executed checks, inspected state, and limitations. Clearly mark independent review/testing as pending until those stages finish.
+
+## Independent review
+After implementation, pause application edits. Give a separate reviewer the requirements, baseline, full actual change, and identified user-approved design with approval record. Do not frame the developer's preferred conclusion as the expected answer. Review includes surrounding code and requirements gaps. Return actionable findings to the developer; document dismissed findings with reasoning. Re-review corrections and affected areas before final validation.
+
+## Test execution
+Pause application edits and give a separate tester the final revised state, requirements, identified user-approved design and approval record, setup, and commands. Tests should exercise acceptance behavior, meaningful edge/failure cases, and affected regressions. Assign test-file ownership explicitly if new tests are needed. The developer remains the application-code owner. If tests change, review those changes before completion. Unexpected failures return to the developer; do not modify tests merely to accept incorrect behavior.
+
+## State tracking
+For Git repositories, record the base commit, current HEAD, changed tracked and relevant untracked paths, and a content-hash snapshot of those files. HEAD alone is insufficient for uncommitted edits. For non-Git projects, record the inspected file set and content hashes. The reader checks its snapshot at the start and end of review/testing. A result only applies to that state. After edits, refresh the snapshot and repeat affected review and tests, broadening if impact is uncertain. Do not commit, reset, stash, or discard user work just to obtain a clean state. Store temporary reports in the project's existing scratch location or an explicitly assigned work directory; avoid secrets and unnecessary repository files.
+
+## Handoff fields
+Every assignment includes role and role skill path, scope, requirements, relevant files and tools, design where applicable, ownership, state/baseline, expected result, current workflow stage, and any actual user approval with the proposal it covers.
+Every result includes inspected state, work performed, evidence, unresolved issues, and next action.
+- Developer: approach considered/chosen, changed files, design consultation, checks performed, integration notes.
+- UI/UX: requirements and target platform, versioned design with flows/layout/states/interactions/accessibility/motion, explicit draft/approved status, actual user approval record, acceptance checklist, resolved decisions, assumptions, and visual evidence with limitations where available.
+- Reviewer: severity, impact, exact location, evidence/reproduction, proposed resolution, coverage limitations.
+- Tester: case-to-criterion mapping, commands/tool actions, exit results, reproduction steps, actual/expected behavior, skipped/blocked checks, changed test files.
+
+## Resource limits and stops
+Keep up to three active subagents alongside the coordinator. Reuse the developer for fixes. Release completed UI/UX and review agents when the runtime requires a slot; do not keep unnecessary agents alive. Review and test dependent stages sequentially. Avoid creating additional layers of delegation.
+Default to at most three review/test correction cycles per feature. Stop earlier when the same blocker repeats twice without new evidence, required authorization is missing, or an external dependency prevents progress. Report the specific unresolved issue and the decision or environment change needed. A stopped/blocked run is incomplete. User direction may change the cycle budget.
+
+## Abandonment and rollback
+If the user cancels or abandons a feature after implementation has begun, the coordinator must ask explicitly whether changes should be: reverted (git revert or checkout), preserved on a WIP branch, or left in the working tree for the user to handle. Do not revert, stash, commit, or discard any work until the user confirms the preferred outcome. The developer reports all current tracked and untracked changes at the point of abandonment and waits for explicit direction before acting. If no user response is received in the session, preserve changes as-is and mark the workflow as abandoned-pending-user-direction.
+
+## Completion
+Require acceptance criteria satisfied, actionable findings resolved or explicitly accepted by the user, and required checks passed on the final applicable state. Report implementation summary, independent review outcome, executed checks, UI design/verification where relevant, and remaining limits. An unavailable browser or test environment is a reported coverage gap; do not invent a pass. Changes still useful under a blocker can be delivered as partial work with a clear incomplete status.
